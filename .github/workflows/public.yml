@@ -22,15 +22,25 @@ jobs:
         version: "9.1.1"
     - name: pnpm install
       run: |
+        pnpm store path
         pnpm install
-        pnpm install codemirror echarts  highlight.js react-codemirror2 react-github-calendar
-    - name: Archive Release
+        pnpm install codemirror echarts  highlight.js react-codemirror2 react-github-calendar 
+    - name: Archive Release source
       uses: thedoctor0/zip-release@0.7.5
       with:
         type: '7z'
         filename: 'release.7z'
+        exclusions: node_modules
+    - name: Archive Release packages
+      uses: thedoctor0/zip-release@0.7.5
+      with:
+        type: '7z'
+        filename: 'packages.7z'    
+        path: 'C:\Users\runneradmin\AppData\Local\pnpm\store\v3'
     - name: create release and upload assets
       uses: softprops/action-gh-release@v2
       with:
-        files: release.7z
+        files: |
+          release.7z
+          packages.7z
         tag_name: ${{ github.event.inputs.tags }}
