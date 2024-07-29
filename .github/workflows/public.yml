@@ -36,7 +36,7 @@ jobs:
       with:
         type: '7z'
         filename: 'packages.7z'    
-        path: 'C:\Users\runneradmin\AppData\Local\pnpm\store\v3'
+        path: 'D:\.pnpm-store'
     - name: create release and upload assets
       uses: softprops/action-gh-release@v2
       with:
