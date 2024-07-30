@@ -32,7 +32,7 @@ jobs:
         filename: 'release.7z'
         exclusions: node_modules
     - name: Archive Release packages
-    - uses: edgarrc/action-7z@v1
+      uses: edgarrc/action-7z@v1
       with:
         args: 7z a -m0=lzma2 -mx t1.7z 'D:\.pnpm-store'
     - name: create release and upload assets
